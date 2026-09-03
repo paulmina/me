@@ -1,0 +1,52 @@
+.hidden {
+    display:none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.col-4 { grid-column: span 4; }
+.col-6 { grid-column: span 6; }
+.col-8 { grid-column: span 8; }
+.col-12 { grid-column: span 12; }
+
+.nav-centered {
+  grid-column: 3 / span 8;
+}
+
+.nav-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.nav-centered {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 buttons = 6 equal columns */
+}
+
+.nav-centered button {
+  width: 100%; /* fill its column completely */
+}
+
+.hero.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.hero.grid {
+  min-height: 80vh; /* or 100vh for full screen */
+  align-items: center; /* centers content vertically within the grid row */
+}
+
+.hero-text {
+  grid-column: 4 / span 6;
+}
+
+button {
+    cursor: pointer;
+}
