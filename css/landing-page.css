@@ -52,6 +52,7 @@ a { color: inherit; }
 }
 
 .header-nav a,
+.footer-links a { display: inline-flex; align-items: center; gap: 4px; }
 .footer-links a,
 .text-link {
   text-decoration: none;
@@ -66,6 +67,9 @@ a { color: inherit; }
 .text-link:focus-visible { color: var(--orange); }
 
 .nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 10px 14px;
   border: 1px solid var(--ink);
   transition: color 180ms ease, background-color 180ms ease;
@@ -92,6 +96,25 @@ a { color: inherit; }
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 24px;
+  padding: 9px 12px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.availability span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #43a047;
+  box-shadow: 0 0 0 0 rgba(67, 160, 71, 0.45);
+  animation: availability-pulse 2s ease-out infinite;
 }
 
 h1,
@@ -154,6 +177,7 @@ em { color: var(--orange); font-style: normal; }
 .section-dark { color: var(--white); background: var(--ink); border-color: rgba(255, 255, 255, 0.25); }
 .section-light { background: var(--white); }
 .section-orange { background: var(--orange); }
+.section-orange em { color: var(--white); }
 .section-dark .eyebrow,
 .section-orange .eyebrow { color: var(--white); }
 
@@ -162,7 +186,8 @@ em { color: var(--orange); font-style: normal; }
 .solution-content,
 .process-content,
 .faq-list,
-.experience-content { grid-column: 7 / span 5; }
+.experience-content,
+.ai-content { grid-column: 7 / span 5; }
 
 .large-copy { margin-bottom: 52px; }
 .proof-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 28px; }
@@ -203,6 +228,16 @@ em { color: var(--orange); font-style: normal; }
 .service h3 { margin-top: 28px; }
 .service p { max-width: 24ch; margin-bottom: 0; line-height: 1.15; }
 
+.section-ai { color: var(--white); background: repeating-linear-gradient(125deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 11px), radial-gradient(circle at 72% 35%, rgba(217, 227, 75, 0.18), transparent 30%), linear-gradient(115deg, var(--ink) 0%, var(--teal, #28414a) 48%, var(--orange) 150%); background-size: 180px 180px, 180% 180%, 220% 220%; animation: ai-gradient 7s ease-in-out infinite alternate; }
+.section-ai .eyebrow { color: var(--lime, #d9e34b); }
+.section-ai em { color: var(--lime, #d9e34b); }
+.ai-description { max-width: 42ch; font-size: 19px; line-height: 1.2; }
+.ai-principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+.ai-principles > div { padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.5); }
+.ai-principles span { display: block; margin-bottom: 28px; color: var(--lime, #d9e34b); font-size: 12px; font-weight: 700; }
+.ai-principles strong { display: block; margin-bottom: 8px; font-size: 18px; line-height: 1; }
+.ai-principles p { margin-bottom: 0; color: rgba(255, 255, 255, 0.78); font-size: 14px; line-height: 1.15; }
+
 .process-step { display: grid; grid-template-columns: 42px 1fr; gap: 12px; padding: 22px 0; border-top: 1px solid var(--line); }
 .process-step h3 { margin-bottom: 8px; }
 .process-step p { max-width: 34ch; margin-bottom: 0; }
@@ -228,6 +263,8 @@ em { color: var(--orange); font-style: normal; }
 .site-footer small { grid-column: 1 / -1; margin-top: 50px; color: var(--grey); }
 
 @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes ai-gradient { from { background-position: 0 0, 0% 50%, 0% 50%; } to { background-position: 90px 45px, 100% 50%, 100% 50%; } }
+@keyframes availability-pulse { 70% { box-shadow: 0 0 0 7px rgba(67, 160, 71, 0); } 100% { box-shadow: 0 0 0 0 rgba(67, 160, 71, 0); } }
 
 @media (max-width: 760px) {
   .site-header { align-items: start; }
@@ -240,6 +277,7 @@ em { color: var(--orange); font-style: normal; }
   .section-intro,
   .proof-content,
   .experience-content,
+  .ai-content,
   .solution-content,
   .process-content,
   .faq-list,
@@ -251,6 +289,7 @@ em { color: var(--orange); font-style: normal; }
   .section-intro h2 { max-width: 10ch; }
   .cost-note { grid-column: 1 / -1; margin-top: 44px; }
   .experience-item { grid-template-columns: 1fr; gap: 12px; }
+  .ai-principles { grid-template-columns: 1fr; gap: 24px; }
   .cta-mark { display: none; }
   .site-footer .brand,
   .site-footer p,
