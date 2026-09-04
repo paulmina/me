@@ -93,6 +93,7 @@ h1 {
   gap: 8px;
   color: inherit;
   text-decoration: none;
+  transition: transform 200ms ease;
 }
 
 #connect h5 {
@@ -107,13 +108,20 @@ h1 {
   width: 0;
   height: 15px;
   opacity: 0;
-  transform: rotate(45deg);
+  transform: translateX(-8px) rotate(45deg);
+  transition: width 200ms ease, opacity 200ms ease, transform 200ms ease;
 }
 
 #connect .connect-link:hover img,
 #connect .connect-link:focus-visible img {
   width: 23px;
   opacity: 1;
+  transform: translateX(0) rotate(45deg);
+}
+
+#connect .connect-link:hover,
+#connect .connect-link:focus-visible {
+  transform: translateX(8px);
 }
 
 .projects-list {
@@ -153,6 +161,11 @@ body:has(#projects:not(.hidden)) .nav-bottom button {
   scroll-padding-bottom: 80px;
 }
 
+#hey {
+  overflow-y: auto;
+  scroll-padding-bottom: 80px;
+}
+
 #projects {
   overflow-y: auto;
   scroll-padding-bottom: 80px;
@@ -168,7 +181,35 @@ body:has(#projects:not(.hidden)) .nav-bottom button {
   scroll-padding-bottom: 80px;
 }
 
+#call {
+  overflow-y: auto;
+  scroll-padding-bottom: 80px;
+}
+
+#info,
+#hey,
+#projects,
+#works,
+#connect,
+#call {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#info::-webkit-scrollbar,
+#hey::-webkit-scrollbar,
+#projects::-webkit-scrollbar,
+#works::-webkit-scrollbar,
+#connect::-webkit-scrollbar,
+#call::-webkit-scrollbar {
+  display: none;
+}
+
 #info .hero-text {
+  padding-bottom: 80px;
+}
+
+#hey .hero-text {
   padding-bottom: 80px;
 }
 
@@ -196,6 +237,7 @@ body:has(#projects:not(.hidden)) .nav-bottom button {
   min-width: 0;
   width: 100%;
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
 #my-cal-inline-15min {
@@ -203,7 +245,7 @@ body:has(#projects:not(.hidden)) .nav-bottom button {
   max-width: 100%;
   min-width: 0;
   height: 100%;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .grid {
@@ -381,11 +423,39 @@ button {
   #call .hero-text {
     grid-column: 1 / -1;
     padding: 0;
-    overflow-y: auto;
+    height: calc(100dvh - 128px);
   }
 
   #my-cal-inline-15min {
     overflow-y: auto;
+  }
+
+  #info {
+    scroll-padding-bottom: 128px;
+  }
+
+  #info .hero-text {
+    padding-bottom: 128px;
+  }
+
+   #works {
+    scroll-padding-bottom: 128px;
+  }
+
+  #works .hero-text {
+    padding-bottom: 128px;
+  }
+
+     #projects {
+    scroll-padding-bottom: 128px;
+  }
+
+  #projects .hero-text {
+    padding-bottom: 128px;
+  }
+
+  #call {
+    scroll-padding-bottom: 128px;
   }
 
   .nav-centered {
