@@ -39,6 +39,11 @@ buttons.forEach(btn => {
   });
 });
 
+const initialTarget = window.location.hash.slice(1);
+const initialButton = [...buttons].find(button => button.dataset.target === initialTarget);
+
+if (initialButton) initialButton.click();
+
 collapseToggles.forEach(toggle => {
   toggle.addEventListener('click', () => {
     const content = toggle.closest('.work-item').querySelector('p');
