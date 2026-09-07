@@ -485,3 +485,6 @@ button {
 hr{
     opacity: 0.25;
 }
+
+a{
+    color: inherit;}
