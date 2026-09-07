@@ -486,5 +486,7 @@ hr{
     opacity: 0.25;
 }
 
-a{
-    color: inherit;}
+a,
+a:visited {
+  color: inherit;
+}
