@@ -3,6 +3,19 @@ const landingSections = landingNavLinks
   .map(link => document.querySelector(link.getAttribute('href')))
   .filter(Boolean);
 const revealSections = [...document.querySelectorAll('main > section, .site-footer')];
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const lenis = !prefersReducedMotion && typeof Lenis !== 'undefined'
+  ? new Lenis({ autoRaf: false, smoothWheel: true })
+  : null;
+
+if (lenis) {
+  const updateLenis = time => {
+    lenis.raf(time);
+    window.requestAnimationFrame(updateLenis);
+  };
+
+  window.requestAnimationFrame(updateLenis);
+}
 
 document.documentElement.classList.add('js');
 
@@ -58,7 +71,22 @@ const setActiveNavLink = sectionId => {
 };
 
 landingNavLinks.forEach(link => {
-  link.addEventListener('click', () => {
+  link.addEventListener('click', event => {
+    const target = document.querySelector(link.getAttribute('href'));
+
+    if (target) {
+      event.preventDefault();
+      if (lenis) {
+        lenis.scrollTo(target, { offset: -88 });
+      } else {
+        target.scrollIntoView({
+          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+          block: 'start'
+        });
+      }
+      window.history.replaceState(null, '', link.getAttribute('href'));
+    }
+
     setActiveNavLink(link.getAttribute('href').slice(1));
   });
 });
